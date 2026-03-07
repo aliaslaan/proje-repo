@@ -3,6 +3,8 @@ title: "Depo Stok Kayıt - Takip Otomasyonu"
 description: "Sistem Analizi ve Tasarımı Proje İlerleme Günlüğü"
 url: "https://aliaslaan.github.io"
 baseurl: "/proje-repo"
+repository: "aliaslaan/proje-repo"
+
 author:
   name: "Ali Aslan"
   bio: "Sistem Analizi ve Tasarımı Öğrencisi"
@@ -14,11 +16,12 @@ author:
 
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
-minimal_mistakes_skin: "default" # We will override this with our Navy/Yellow CSS
+minimal_mistakes_skin: "default"
 
 plugins:
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-remote-theme
 
 # Layout Defaults
 defaults:
@@ -29,7 +32,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: false
       share: true
       related: true
   - scope:
@@ -39,7 +41,7 @@ defaults:
       layout: single
       author_profile: true
 
-# Exclude
+# Exclude from processing.
 exclude:
   - .sass-cache/
   - .jekyll-cache/
