@@ -1,15 +1,14 @@
 # Site settings
 title: Depo Stok Kayıt - Takip Otomasyonu
-email: aliaslaan@example.com
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
   Sistem Analizi ve Tasarımı dersi proje ilerleme günlüğü. 
   Ali Aslan tarafından geliştirilmektedir.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: ""
+url: ""
 author: Ali Aslan
 
 # Build settings
-theme: minima
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 
