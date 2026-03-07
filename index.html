@@ -180,34 +180,86 @@
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px 22px;
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 16px;
-      align-items: start;
+      padding: 0;
+      overflow: hidden;
       transition: box-shadow .15s, border-color .15s;
+      cursor: pointer;
     }
     .update-item:hover {
       border-color: #c7d7fd;
-      box-shadow: 0 2px 12px rgba(37,99,235,.06);
+      box-shadow: 0 4px 20px rgba(37,99,235,.08);
+    }
+    
+    .update-header {
+      padding: 20px 22px;
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .update-week-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
     }
 
     .update-week {
       font-size: .7rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--blue);
       background: var(--blue-soft);
       border-radius: 5px;
       padding: 3px 7px;
       text-align: center;
       letter-spacing: .03em;
-      margin-top: 2px;
+      width: 100%;
+    }
+    
+    .update-date {
+      font-size: .65rem;
+      color: var(--sub);
+      font-weight: 500;
     }
 
-    .update-body h4 { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-    .update-body p  { font-size: .85rem; color: var(--sub); line-height: 1.65; }
+    .update-body h4 { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .update-body p  { font-size: .85rem; color: var(--sub); line-height: 1.6; }
 
-    .update-item.empty { background: var(--bg); border-style: dashed; }
+    .arrow-icon {
+      width: 20px; height: 20px;
+      fill: var(--sub);
+      transition: transform .2s ease;
+    }
+    .update-item.active .arrow-icon {
+      transform: rotate(180deg);
+      fill: var(--blue);
+    }
+
+    /* DETAILS SECTION */
+    .update-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+      background: #fafbfc;
+      border-top: 1px solid transparent;
+    }
+    .update-item.active .update-details {
+      max-height: 1000px; /* Large enough to fit content */
+      padding: 20px 22px 24px 88px;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-content {
+      font-size: .88rem;
+      color: var(--text);
+    }
+    .detail-content h5 { margin: 16px 0 8px; font-weight: 600; color: var(--blue); }
+    .detail-content ul { padding-left: 18px; margin-bottom: 12px; }
+    .detail-content li { margin-bottom: 6px; }
+
+    .update-item.empty { background: var(--bg); border-style: dashed; cursor: default; }
+    .update-item.empty:hover { box-shadow: none; border-color: var(--border); }
     .update-item.empty .update-week { background: #f1f3f5; color: #9ca3af; }
     .update-item.empty .update-body h4 { color: #9ca3af; font-weight: 400; }
 
@@ -270,26 +322,69 @@
     <div class="section-heading">Son Güncellemeler</div>
     <div class="update-list">
 
-      <div class="update-item">
-        <div class="update-week">Hafta 1</div>
-        <div class="update-body">
-          <h4>Proje Başlangıcı</h4>
-          <p>Proje kapsamı belirlendi, ekip rolleri atandı ve gereksinim analizi çalışmaları başlatıldı.</p>
+      <!-- Hafta 1 -->
+      <div class="update-item" onclick="toggleUpdate(this)">
+        <div class="update-header">
+          <div class="update-week-box">
+            <div class="update-week">Hafta 1</div>
+            <div class="update-date">23 Şubat</div>
+          </div>
+          <div class="update-body">
+            <h4>Proje Başlangıcı ve Kapsam</h4>
+            <p>Proje konusunun seçimi, temel modüllerin belirlenmesi ve planlama aşaması.</p>
+          </div>
+          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </div>
+        <div class="update-details">
+          <div class="detail-content">
+            <h5>Yapılan Çalışmalar:</h5>
+            <ul>
+              <li>Depo Stok Takip Otomasyonu proje konusu olarak seçildi.</li>
+              <li>Kullanılacak teknolojiler (Java Swing & MySQL) belirlendi.</li>
+              <li>Projenin temel hedefleri ve başarı kriterleri tanımlandı.</li>
+            </ul>
+            <p><em>Rapor içeriği bekleniyor...</em></p>
+          </div>
         </div>
       </div>
 
-      <div class="update-item">
-        <div class="update-week">Hafta 2</div>
-        <div class="update-body">
-          <h4>Gereksinim Analizi</h4>
-          <p>Kullanıcı hikayeleri oluşturuldu, sistem gereksinimleri dokümante edildi.</p>
+      <!-- Hafta 2 -->
+      <div class="update-item" onclick="toggleUpdate(this)">
+        <div class="update-header">
+          <div class="update-week-box">
+            <div class="update-week">Hafta 2</div>
+            <div class="update-date">2 Mart</div>
+          </div>
+          <div class="update-body">
+            <h4>Gereksinim Analizi</h4>
+            <p>Sistem gereksinimlerinin detaylandırılması ve kullanıcı rolleri.</p>
+          </div>
+          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </div>
+        <div class="update-details">
+          <div class="detail-content">
+            <h5>Yapılan Çalışmalar:</h5>
+            <ul>
+              <li>Kullanıcı gereksinimleri toplandı.</li>
+              <li>Sistemin fonksiyonel ve fonksiyonel olmayan gereksinimleri listelendi.</li>
+              <li>Yönetici ve Personel rolleri için yetki matrisi taslak haline getirildi.</li>
+            </ul>
+            <p><em>Rapor içeriği bekleniyor...</em></p>
+          </div>
         </div>
       </div>
 
+      <!-- Hafta 3 -->
       <div class="update-item empty">
-        <div class="update-week">Hafta 3</div>
-        <div class="update-body">
-          <h4>Henüz güncelleme yok</h4>
+        <div class="update-header">
+          <div class="update-week-box">
+            <div class="update-week">Hafta 3</div>
+            <div class="update-date">9 Mart</div>
+          </div>
+          <div class="update-body">
+            <h4>Henüz güncelleme yok</h4>
+            <p>Gelecek hafta yapılacak güncellemeleri buradan takip edebilirsiniz.</p>
+          </div>
         </div>
       </div>
 
@@ -302,5 +397,22 @@
   </footer>
 
 </div>
+
+<script>
+  function toggleUpdate(element) {
+    if (element.classList.contains('empty')) return;
+    
+    // Close other active items
+    const allItems = document.querySelectorAll('.update-item');
+    allItems.forEach(item => {
+      if (item !== element) {
+        item.classList.remove('active');
+      }
+    });
+
+    // Toggle current item
+    element.classList.toggle('active');
+  }
+</script>
 </body>
 </html>
