@@ -1,19 +1,19 @@
 ---
-layout: page
-title: Hakkında
+layout: single
+title: "Hakkında"
 permalink: /about/
+author_profile: true
 ---
 
 ### Proje Sahibi: Ali Aslan
 **Proje Adı:** Depo Stok Kayıt - Takip Otomasyonu
 
-#### Proje Özeti
-Bu proje, depoların stok giriş-çıkış süreçlerini dijitalleştirmek, envanter takibini kolaylaştırmak ve raporlama süreçlerini hızlandırmak amacıyla geliştirilen bir masaüstü uygulamasıdır.
+Bu proje, modern depo yönetim ihtiyaçlarını karşılamak üzere **Java Swing** ve **MySQL** teknolojileri kullanılarak geliştirilmektedir.
 
-#### Kullanılan Teknolojiler
-- **Dil:** Java
-- **Arayüz:** Java Swing
-- **Veritabanı:** MySQL
-- **Geliştirme Ortamı:** NetBeans / IntelliJ IDEA
+#### Akademik Hedefler
+- Veritabanı normalizasyonu ve ER diyagramı oluşturma.
+- Kullanıcı dostu ve modüler bir arayüz tasarımı.
+- CRUD (Create, Read, Update, Delete) operasyonlarının optimizasyonu.
+- Stok raporlama ve veri güvenliği süreçlerinin analizi.
 
-Haftalık ilerleme raporlarına ana sayfadan ulaşabilirsiniz.
+Haftalık teknik detaylara ana sayfadan ulaşabilirsiniz.

@@ -1,0 +1,60 @@
+---
+# Professional Navy & Yellow (Minimalist Style)
+---
+@import "minimal-mistakes/skins/default"; 
+
+// Kurumsal Renk Tanımları
+$navy: #002147;
+$yellow: #FEDD00;
+$background-color: #f4f7f9;
+
+/* Header & Navigation */
+.masthead {
+  background-color: $navy;
+  border-bottom: 4px solid $yellow;
+}
+
+.masthead__menu-item a {
+  color: white !important;
+  font-weight: bold;
+  &:hover {
+    color: $yellow !important;
+  }
+}
+
+.site-title {
+  color: $yellow !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Sidebar & Buttons */
+.author__urls-wrapper button {
+  background-color: $navy;
+  color: $yellow;
+}
+
+.btn--primary {
+  background-color: $navy;
+  border-color: $navy;
+  &:hover {
+    background-color: lighten($navy, 10%);
+  }
+}
+
+/* Post Styling */
+.page__title {
+  color: $navy;
+  border-bottom: 2px solid $yellow;
+  padding-bottom: 0.5em;
+}
+
+.page__content h2, .page__content h3 {
+  color: $navy;
+}
+
+/* Footer */
+.page__footer {
+  background-color: darken($background-color, 5%);
+  color: $navy;
+}

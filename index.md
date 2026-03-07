@@ -1,9 +1,18 @@
 ---
-layout: home
+layout: archive
+title: "Proje İlerleme Raporları"
+permalink: /
+author_profile: true
+header:
+  overlay_color: "#002147"
+  overlay_filter: "0.5"
+  caption: "Depo Stok Kayıt - Takip Otomasyonu"
 ---
 
-# Proje İlerleme Raporları
+Sistem Analizi ve Tasarımı dersi kapsamında hazırlanan bu blogda, haftalık teknik ilerlemeleri ve sistem tasarım süreçlerini bulabilirsiniz.
 
-Bu blog, **Sistem Analizi ve Tasarımı** dersi kapsamında geliştirilen **Depo Stok Kayıt - Takip Otomasyonu** projesinin haftalık gelişim sürecini takip etmek amacıyla oluşturulmuştur.
+## Son Güncellemeler
 
----
+{% for post in site.posts %}
+  {% include archive-single.html %}
+{% endfor %}
