@@ -1,0 +1,27 @@
+# Site settings
+title: Depo Stok Kayıt - Takip Otomasyonu
+email: aliaslaan@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Sistem Analizi ve Tasarımı dersi proje ilerleme günlüğü. 
+  Ali Aslan tarafından geliştirilmektedir.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+author: Ali Aslan
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
