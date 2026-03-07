@@ -20,6 +20,9 @@ body {
   .site-title {
     color: $yellow !important;
     font-weight: bold;
+    &:visited {
+      color: $yellow !important;
+    }
   }
   
   .page-link {
@@ -32,9 +35,15 @@ body {
 
 .post-link {
   color: $navy !important;
+  font-weight: bold;
   &:hover {
     color: lighten($navy, 20%) !important;
+    text-decoration: underline;
   }
+}
+
+.post-meta {
+  color: #666;
 }
 
 .post-title, h1, h2, h3 {

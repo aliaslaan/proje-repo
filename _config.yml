@@ -1,45 +1,16 @@
 # Site settings
 title: "Depo Stok Kayıt - Takip Otomasyonu"
-description: "Sistem Analizi ve Tasarımı Proje İlerleme Günlüğü"
-url: "https://aliaslaan.github.io"
+description: >-
+  Sistem Analizi ve Tasarımı dersi proje ilerleme günlüğü. 
+  Ali Aslan tarafından geliştirilmektedir.
 baseurl: "/proje-repo"
-repository: "aliaslaan/proje-repo"
-
-author:
-  name: "Ali Aslan"
-  bio: "Sistem Analizi ve Tasarımı Öğrencisi"
-  location: "Türkiye"
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/aliaslaan"
+url: "https://aliaslaan.github.io"
+author: Ali Aslan
 
 # Build settings
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
-minimal_mistakes_skin: "default"
-
+theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-include-cache
-  - jekyll-remote-theme
-
-# Layout Defaults
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      share: true
-      related: true
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-      author_profile: true
 
 # Exclude from processing.
 exclude:
