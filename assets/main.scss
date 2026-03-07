@@ -1,0 +1,55 @@
+---
+# Custom Sarı-Lacivert Skin
+---
+@import "minima";
+
+// Renk Değişkenleri
+$navy: #002147;
+$yellow: #FEDD00;
+$light-yellow: #fff9db;
+
+body {
+  background-color: #fdfdfd;
+}
+
+.site-header {
+  background-color: $navy;
+  border-top: 5px solid $yellow;
+  border-bottom: 1px solid $navy;
+  
+  .site-title {
+    color: $yellow !important;
+    font-weight: bold;
+  }
+  
+  .page-link {
+    color: white !important;
+    &:hover {
+      color: $yellow !important;
+    }
+  }
+}
+
+.post-link {
+  color: $navy !important;
+  &:hover {
+    color: lighten($navy, 20%) !important;
+  }
+}
+
+.post-title, h1, h2, h3 {
+  color: $navy;
+}
+
+hr {
+  border-top: 1px solid $light-yellow;
+}
+
+.wrapper {
+  max-width: 900px;
+}
+
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid $light-yellow;
+}
