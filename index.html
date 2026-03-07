@@ -184,6 +184,8 @@
       overflow: hidden;
       transition: box-shadow .15s, border-color .15s;
       cursor: pointer;
+      text-decoration: none;
+      display: block;
     }
     .update-item:hover {
       border-color: #c7d7fd;
@@ -231,32 +233,10 @@
       fill: var(--sub);
       transition: transform .2s ease;
     }
-    .update-item.active .arrow-icon {
-      transform: rotate(180deg);
+    .update-item:hover .arrow-icon {
+      transform: translateX(4px);
       fill: var(--blue);
     }
-
-    /* DETAILS SECTION */
-    .update-details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out, padding 0.3s ease;
-      background: #fafbfc;
-      border-top: 1px solid transparent;
-    }
-    .update-item.active .update-details {
-      max-height: 1000px; /* Large enough to fit content */
-      padding: 20px 22px 24px 88px;
-      border-top: 1px solid var(--border);
-    }
-
-    .detail-content {
-      font-size: .88rem;
-      color: var(--text);
-    }
-    .detail-content h5 { margin: 16px 0 8px; font-weight: 600; color: var(--blue); }
-    .detail-content ul { padding-left: 18px; margin-bottom: 12px; }
-    .detail-content li { margin-bottom: 6px; }
 
     .update-item.empty { background: var(--bg); border-style: dashed; cursor: default; }
     .update-item.empty:hover { box-shadow: none; border-color: var(--border); }
@@ -323,7 +303,7 @@
     <div class="update-list">
 
       <!-- Hafta 1 -->
-      <div class="update-item" onclick="toggleUpdate(this)">
+      <a href="hafta1.html" class="update-item">
         <div class="update-header">
           <div class="update-week-box">
             <div class="update-week">Hafta 1</div>
@@ -333,22 +313,11 @@
             <h4>Teorik Bilgiler ve Giriş</h4>
             <p>Sistem analizi ve tasarımı dersi ile ilgili temel teorik bilgiler ve giriş dersleri işlendi.</p>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-        </div>
-        <div class="update-details">
-          <div class="detail-content">
-            <h5>Yapılan Çalışmalar:</h5>
-            <ul>
-              <li>Sistem analizi ve tasarımı dersi ile ilgili teorik bilgiler öğrenildi.</li>
-              <li>Sistem yaşam döngüsü ve analiz aşamaları hakkında dersler işlendi.</li>
-              <li>Temel kavramlar ve metodolojiler üzerine duruldu.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+        </a>
 
       <!-- Hafta 2 -->
-      <div class="update-item" onclick="toggleUpdate(this)">
+      <a href="hafta2.html" class="update-item">
         <div class="update-header">
           <div class="update-week-box">
             <div class="update-week">Hafta 2</div>
@@ -358,22 +327,11 @@
             <h4>Proje Fikir Analizi</h4>
             <p>Proje fikrinin olgunlaştırılması ve teknolojik altyapı araştırmaları.</p>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-        </div>
-        <div class="update-details">
-          <div class="detail-content">
-            <h5>Yapılan Çalışmalar:</h5>
-            <ul>
-              <li>Yapılacak proje hakkında kapsamlı araştırmalar yapıldı.</li>
-              <li>Kullanılacak teknolojiler (Java Swing, MySQL vb.) hakkında araştırma yapıldı.</li>
-              <li>Benzer otomasyon sistemleri incelenerek temel özellikler belirlendi.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+        </a>
 
       <!-- Hafta 3 -->
-      <div class="update-item" onclick="toggleUpdate(this)">
+      <a href="hafta3.html" class="update-item">
         <div class="update-header">
           <div class="update-week-box">
             <div class="update-week">Hafta 3</div>
@@ -383,22 +341,11 @@
             <h4>Proje Başlangıcı ve Kapsam</h4>
             <p>Proje konusunun seçimi, temel modüllerin belirlenmesi ve planlama aşaması.</p>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-        </div>
-        <div class="update-details">
-          <div class="detail-content">
-            <h5>Yapılan Çalışmalar:</h5>
-            <ul>
-              <li>Depo Stok Takip Otomasyonu proje konusu olarak seçildi.</li>
-              <li>Kullanılacak teknolojiler (Java Swing & MySQL) kesinleştirildi.</li>
-              <li>Projenin temel hedefleri ve başarı kriterleri tanımlandı.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+        </a>
 
       <!-- Hafta 4 -->
-      <div class="update-item" onclick="toggleUpdate(this)">
+      <a href="hafta4.html" class="update-item">
         <div class="update-header">
           <div class="update-week-box">
             <div class="update-week">Hafta 4</div>
@@ -408,19 +355,8 @@
             <h4>Gereksinim Analizi</h4>
             <p>Sistem gereksinimlerinin detaylandırılması ve kullanıcı rolleri.</p>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-        </div>
-        <div class="update-details">
-          <div class="detail-content">
-            <h5>Yapılan Çalışmalar:</h5>
-            <ul>
-              <li>Kullanıcı gereksinimleri toplandı.</li>
-              <li>Sistemin fonksiyonel ve fonksiyonel olmayan gereksinimleri listelendi.</li>
-              <li>Yönetici ve Personel rolleri için yetki matrisi taslak haline getirildi.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+        </a>
 
     </div>
   </section>
@@ -433,20 +369,9 @@
 </div>
 
 <script>
-  function toggleUpdate(element) {
-    if (element.classList.contains('empty')) return;
-    
-    // Close other active items
-    const allItems = document.querySelectorAll('.update-item');
-    allItems.forEach(item => {
-      if (item !== element) {
-        item.classList.remove('active');
-      }
-    });
-
-    // Toggle current item
-    element.classList.toggle('active');
-  }
+  // Artık toggle fonksiyonuna gerek kalmadı
 </script>
+</body>
+</html>
 </body>
 </html>

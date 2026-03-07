@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hafta 3 — Depo Stok Takip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #f7f8f9;
+      --white:     #ffffff;
+      --border:    #e4e7ec;
+      --blue:      #2563eb;
+      --blue-soft: #eff4ff;
+      --text:      #1a1d23;
+      --sub:       #6b7280;
+      --sans:      'Inter', sans-serif;
+      --display:   'Sora', sans-serif;
+      --radius:    12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-icon {
+      width: 40px; height: 40px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: grid; place-items: center;
+    }
+    .brand-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .brand-name {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .nav-link {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: background .15s;
+    }
+    .nav-link:hover { background: var(--border); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .week-badge {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .date {
+      color: var(--sub);
+      font-size: .9rem;
+      margin-bottom: 32px;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .details h2 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .details ul {
+      padding-left: 20px;
+    }
+
+    .details li {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    footer p { font-size: .75rem; color: #b0b8c4; }
+
+    .fade-up { opacity: 0; transform: translateY(14px); animation: fu .45s ease forwards; }
+    @keyframes fu { to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="site-header fade-up">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5v2H2V7zm0 4h20v10H2V11zm4 2v6h4v-6H6zm8 0v6h4v-6h-4z"/></svg>
+      </div>
+      <div class="brand-name">Depo Stok Takip</div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-link">Ana Sayfa</a>
+      <a href="about.html" class="nav-link">Hakkında</a>
+    </nav>
+  </header>
+
+  <main class="fade-up">
+    <a href="index.html" class="back-link">← Geri Dön</a>
+    
+    <article class="content-card">
+      <div class="week-badge">Hafta 3</div>
+      <h1>Proje Başlangıcı ve Kapsam</h1>
+      <p class="date">3 Mart 2026</p>
+
+      <div class="description">
+        Proje konusunun seçimi, temel modüllerin belirlenmesi ve planlama aşaması tamamlandı.
+      </div>
+
+      <div class="details">
+        <h2>Yapılan Çalışmalar</h2>
+        <ul>
+          <li>Depo Stok Takip Otomasyonu proje konusu olarak seçildi.</li>
+          <li>Kullanılacak teknolojiler (Java Swing & MySQL) kesinleştirildi.</li>
+          <li>Projenin temel hedefleri ve başarı kriterleri tanımlandı.</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>Depo Stok Kayıt & Takip Otomasyonu — Proje Geliştirme Blogu</p>
+  </footer>
+</div>
+</body>
+</html>
