@@ -93,6 +93,20 @@
       background: var(--green);
     }
 
+    /* NAV */
+    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .nav-link {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: background .15s, color .15s;
+    }
+    .nav-link:hover { background: var(--border); color: var(--text); }
+    .nav-link.active { background: var(--blue-soft); color: var(--blue); font-weight: 600; }
+
     /* HERO */
     .hero { margin-bottom: 48px; }
 
@@ -228,7 +242,11 @@
         <span>Sistem Analizi ve Tasarımı</span>
       </div>
     </div>
-    <div class="status-badge">Proje Devam Ediyor</div>
+    <div class="header-right">
+      <a href="index.html" class="nav-link active">Ana Sayfa</a>
+      <a href="about.html" class="nav-link">Hakkında</a>
+      <div class="status-badge">Proje Devam Ediyor</div>
+    </div>
   </header>
 
   <section class="hero fade-up d1">
