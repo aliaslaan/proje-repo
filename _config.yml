@@ -3,8 +3,8 @@ title: Depo Stok Kayıt - Takip Otomasyonu
 description: >-
   Sistem Analizi ve Tasarımı dersi proje ilerleme günlüğü. 
   Ali Aslan tarafından geliştirilmektedir.
-baseurl: ""
-url: ""
+baseurl: "/proje-repo"
+url: "https://aliaslaan.github.io"
 author: Ali Aslan
 
 # Build settings
