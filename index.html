@@ -20,7 +20,7 @@
       --green-bg:  #f0fdf4;
       --sans:      'Inter', sans-serif;
       --display:   'Sora', sans-serif;
-      --radius:    10px;
+      --radius:    12px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +34,7 @@
       min-height: 100vh;
     }
 
-    .page { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+    .page { max-width: 840px; margin: 0 auto; padding: 48px 24px 80px; }
 
     /* HEADER */
     .site-header {
@@ -170,48 +170,50 @@
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
-    /* UPDATE LIST */
-    .update-list { display: flex; flex-direction: column; gap: 12px; }
+    /* UPDATE LIST - GRID */
+    .update-list { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+      gap: 20px; 
+    }
 
     .update-item {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 0;
-      overflow: hidden;
-      transition: box-shadow .15s, border-color .15s;
+      padding: 24px;
+      transition: all .2s ease;
       cursor: pointer;
       text-decoration: none;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
     }
     .update-item:hover {
-      border-color: #c7d7fd;
-      box-shadow: 0 4px 20px rgba(37,99,235,.08);
+      border-color: var(--blue);
+      box-shadow: 0 10px 30px rgba(37,99,235,.06);
+      transform: translateY(-3px);
     }
     
-    .update-header {
-      padding: 18px 24px;
-      display: grid;
-      grid-template-columns: 80px 1fr 24px;
-      gap: 20px;
-      align-items: center;
+    .update-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
     }
 
     .update-week-box {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-right: 1px solid var(--border);
-      padding-right: 20px;
-      min-height: 40px;
+      gap: 4px;
     }
 
     .update-week {
-      font-size: .75rem;
+      font-size: .7rem;
       font-weight: 700;
       color: var(--blue);
       background: var(--blue-soft);
@@ -219,50 +221,37 @@
       padding: 4px 8px;
       text-align: center;
       letter-spacing: .02em;
-      white-space: nowrap;
+      width: fit-content;
     }
     
     .update-date {
       font-size: .68rem;
       color: var(--sub);
       font-weight: 500;
-      margin-top: 4px;
-    }
-
-    .update-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .update-body h4 { 
-      font-size: .95rem; 
-      font-weight: 600; 
-      color: var(--text); 
-      margin: 0;
-      line-height: 1.4;
+      margin-left: 2px;
     }
 
     .arrow-icon {
-      width: 20px; 
-      height: 20px;
+      width: 20px; height: 20px;
       fill: var(--sub);
       transition: all .2s ease;
-      justify-self: end;
     }
     .update-item:hover .arrow-icon {
       transform: translateX(4px);
       fill: var(--blue);
     }
 
-    .update-item.empty { background: var(--bg); border-style: dashed; cursor: default; }
-    .update-item.empty:hover { box-shadow: none; border-color: var(--border); }
-    .update-item.empty .update-week { background: #f1f3f5; color: #9ca3af; }
-    .update-item.empty .update-body h4 { color: #9ca3af; font-weight: 400; }
+    .update-body h4 { 
+      font-size: 1.05rem; 
+      font-weight: 700; 
+      color: var(--text); 
+      line-height: 1.4;
+      margin: 0;
+    }
 
     /* FOOTER */
     footer {
-      margin-top: 64px;
+      margin-top: 80px;
       padding-top: 24px;
       border-top: 1px solid var(--border);
       display: flex;
@@ -316,60 +305,64 @@
   <hr class="divider fade-up d2"/>
 
   <section class="fade-up d3">
-    <div class="section-heading">Son Güncellemeler</div>
+    <div class="section-heading">Haftalık Güncellemeler</div>
     <div class="update-list">
 
       <!-- Hafta 1 -->
       <a href="hafta1.html" class="update-item">
-        <div class="update-header">
+        <div class="update-top">
           <div class="update-week-box">
             <div class="update-week">Hafta 1</div>
             <div class="update-date">17 Şubat</div>
           </div>
-          <div class="update-body">
-            <h4>Teorik Bilgiler ve Giriş</h4>
-          </div>
           <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-        </a>
+        </div>
+        <div class="update-body">
+          <h4>Teorik Bilgiler ve Giriş</h4>
+        </div>
+      </a>
 
       <!-- Hafta 2 -->
       <a href="hafta2.html" class="update-item">
-        <div class="update-header">
+        <div class="update-top">
           <div class="update-week-box">
             <div class="update-week">Hafta 2</div>
             <div class="update-date">24 Şubat</div>
           </div>
-          <div class="update-body">
-            <h4>Proje Fikir Analizi</h4>
-          </div>
           <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-        </a>
+        </div>
+        <div class="update-body">
+          <h4>Proje Fikir Analizi</h4>
+        </div>
+      </a>
 
       <!-- Hafta 3 -->
       <a href="hafta3.html" class="update-item">
-        <div class="update-header">
+        <div class="update-top">
           <div class="update-week-box">
             <div class="update-week">Hafta 3</div>
             <div class="update-date">3 Mart</div>
           </div>
-          <div class="update-body">
-            <h4>Proje Başlangıcı ve Kapsam</h4>
-          </div>
           <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-        </a>
+        </div>
+        <div class="update-body">
+          <h4>Proje Başlangıcı ve Kapsam</h4>
+        </div>
+      </a>
 
       <!-- Hafta 4 -->
       <a href="hafta4.html" class="update-item">
-        <div class="update-header">
+        <div class="update-top">
           <div class="update-week-box">
             <div class="update-week">Hafta 4</div>
             <div class="update-date">10 Mart</div>
           </div>
-          <div class="update-body">
-            <h4>Gereksinim Analizi</h4>
-          </div>
           <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-        </a>
+        </div>
+        <div class="update-body">
+          <h4>Gereksinim Analizi</h4>
+        </div>
+      </a>
 
     </div>
   </section>
@@ -380,9 +373,5 @@
   </footer>
 
 </div>
-
-<script>
-  // Artık toggle fonksiyonuna gerek kalmadı
-</script>
 </body>
 </html>
