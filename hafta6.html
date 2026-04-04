@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hafta 6 — Depo Stok Takip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #f8fafc;
+      --white:     #ffffff;
+      --border:    #e2e8f0;
+      --primary:   #0f172a;
+      --accent:    #3b82f6;
+      --accent-soft:#eff6ff;
+      --text:      #334155;
+      --sub:       #64748b;
+      --tag-bg:    #f1f5f9;
+      --tag-text:  #475569;
+      --sans:      'Inter', sans-serif;
+      --display:   'Sora', sans-serif;
+      --radius:    16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 840px; margin: 0 auto; padding: 60px 24px 100px; }
+
+    /* HEADER */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 60px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+
+    .brand-icon {
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+    }
+    .brand-icon svg { width: 24px; height: 24px; fill: #fff; }
+
+    .brand-name {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 16px; }
+
+    .nav-link {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all .2s;
+    }
+    .nav-link:hover { background: var(--border); color: var(--primary); }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .week-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .date {
+      font-size: 1rem;
+      color: var(--sub);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .date::before {
+        content: '📅';
+        font-size: 1.1rem;
+    }
+
+    .description {
+      font-size: 1.15rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .details h2 {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .details h2::before {
+      content: '';
+      width: 4px; height: 28px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .details h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    .details p {
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .details ul {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .details li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .details li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all .2s;
+      margin-bottom: 24px;
+    }
+    .back-link:hover { color: var(--accent); transform: translateX(-4px); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    footer p { font-size: .85rem; color: var(--sub); }
+
+    /* ANIM */
+    .fade-up { opacity: 0; transform: translateY(20px); animation: fu .6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+    @keyframes fu { to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header fade-up">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5v2H2V7zm0 4h20v10H2V11zm4 2v6h4v-6H6zm8 0v6h4v-6h-4z"/></svg>
+      </div>
+      <div class="brand-name">
+        Depo Stok Takip
+      </div>
+    </a>
+    <div class="header-right">
+      <a href="index.html" class="nav-link">Ana Sayfa</a>
+      <a href="about.html" class="nav-link">Hakkında</a>
+    </div>
+  </header>
+
+  <main class="fade-up">
+    <a href="index.html" class="back-link">← Geri Dön</a>
+    
+    <article class="content-card">
+      <div class="week-badge">Hafta 6</div>
+      <h1>Waterfall (Şelale) ve V Model</h1>
+      <p class="date">24 Mart 2026</p>
+
+      <div class="description">
+        Bu hafta yazılım geliştirme metodolojilerinden klasik Waterfall (Şelale) modeli ve test odaklı V-Model süreçlerini, aralarındaki farkları ve kullanım senaryolarını inceledik.
+      </div>
+
+      <div class="details">
+        <h2>Yazılım Geliştirme Modelleri</h2>
+        
+        <h3>Waterfall (Şelale) Modeli</h3>
+        <p>Waterfall modeli, yazılım geliştirme sürecinin doğrusal ve ardışık fazlar halinde ilerlediği en eski ve temel modeldir. Bir faz tamamlanmadan diğerine geçilmez.</p>
+        <ul>
+          <li><strong>Analiz:</strong> Gereksinimlerin dökümante edilmesi.</li>
+          <li><strong>Tasarım:</strong> Sistemin mimari planı.</li>
+          <li><strong>Kodlama:</strong> Uygulamanın geliştirilmesi.</li>
+          <li><strong>Test:</strong> Bitmiş ürünün hatalarının kontrolü.</li>
+          <li><strong>Bakım:</strong> Dağıtım sonrası iyileştirmeler.</li>
+        </ul>
+
+        <h3>V-Model</h3>
+        <p>Waterfall modelinin bir uzantısı olan V-Model, "Doğrulama" (Verification) ve "Geçerleme" (Validation) aşamalarını birbirine paralel şekilde ele alır. Her geliştirme adımına karşılık gelen bir test aşaması bulunur.</p>
+        <ul>
+          <li>Sol kol geliştirme fazlarını temsil eder (Analiz -> Tasarım -> Kodlama).</li>
+          <li>Sağ kol ise test fazlarını temsil eder (Birim Test -> Entegrasyon Test -> Sistem Test).</li>
+        </ul>
+
+        <h3>Waterfall ve V-Model Arasındaki Farklar</h3>
+        <ul>
+          <li><strong>Hata Tespiti:</strong> Waterfall modelinde hatalar genellikle sürecin sonunda (test fazında) fark edilirken; V-Model'de test planlaması en baştan yapıldığı için hatalar daha erken safhalarda öngörülebilir.</li>
+          <li><strong>Esneklik:</strong> Her iki model de katıdır ancak V-Model test süreçleri açısından daha sistematik bir yapı sunar.</li>
+          <li><strong>Risk Yönetimi:</strong> V-Model, her aşamada test onay mekanizması sunduğu için Waterfall'a göre daha güvenlidir.</li>
+        </ul>
+
+        <h3>Ders Hakkında Notlar</h3>
+        <p>Sistem Analizi ve Tasarımı dersinde bu hafta projelerimizin mimari temellerini nasıl sağlam atabileceğimizi tartıştık. Bir sistemin başarısı, doğru metodolojinin seçilmesine ve gereksinimlerin test edilebilir şekilde dökümante edilmesine bağlıdır.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="fade-up">
+    <p>© 2026 Depo Stok Kayıt & Takip Otomasyonu</p>
+    <p>Sistem Analizi ve Tasarımı Dersi</p>
+  </footer>
+
+</div>
+</body>
+</html>
