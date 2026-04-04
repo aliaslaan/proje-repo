@@ -7,20 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg:        #f7f8f9;
+      --bg:        #f8fafc;
       --white:     #ffffff;
-      --border:    #e4e7ec;
-      --blue:      #2563eb;
-      --blue-soft: #eff4ff;
-      --text:      #1a1d23;
-      --sub:       #6b7280;
-      --tag-bg:    #eef2ff;
-      --tag-text:  #3b5bdb;
-      --green:     #16a34a;
-      --green-bg:  #f0fdf4;
+      --border:    #e2e8f0;
+      --primary:   #0f172a;
+      --accent:    #3b82f6;
+      --accent-soft:#eff6ff;
+      --text:      #334155;
+      --sub:       #64748b;
+      --tag-bg:    #f1f5f9;
+      --tag-text:  #475569;
+      --green:     #10b981;
+      --green-bg:  #ecfdf5;
       --sans:      'Inter', sans-serif;
       --display:   'Sora', sans-serif;
-      --radius:    12px;
+      --radius:    16px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,242 +30,262 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.7;
       min-height: 100vh;
     }
 
-    .page { max-width: 840px; margin: 0 auto; padding: 48px 24px 80px; }
+    .page { max-width: 900px; margin: 0 auto; padding: 60px 24px 100px; }
 
     /* HEADER */
     .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 32px;
+      padding-bottom: 40px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
-      gap: 16px;
+      margin-bottom: 60px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 16px; }
 
     .brand-icon {
-      width: 40px; height: 40px;
-      background: var(--blue);
-      border-radius: 8px;
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 12px;
       display: grid; place-items: center;
       flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
     }
-    .brand-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .brand-icon svg { width: 24px; height: 24px; fill: #fff; }
 
     .brand-name {
       font-family: var(--display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
       line-height: 1.2;
     }
     .brand-name span {
       display: block;
       font-family: var(--sans);
-      font-size: .75rem;
-      font-weight: 400;
-      color: var(--sub);
-    }
-
-    .status-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green-bg);
-      color: var(--green);
-      font-size: .72rem;
-      font-weight: 600;
-      padding: 5px 10px;
-      border-radius: 20px;
-      letter-spacing: .02em;
-    }
-    .status-badge::before {
-      content: '';
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
-    /* NAV */
-    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .nav-link {
-      font-size: .82rem;
+      font-size: .8rem;
       font-weight: 500;
       color: var(--sub);
-      text-decoration: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      transition: background .15s, color .15s;
+      margin-top: 2px;
     }
-    .nav-link:hover { background: var(--border); color: var(--text); }
-    .nav-link.active { background: var(--blue-soft); color: var(--blue); font-weight: 600; }
+
+    .project-roles {
+      font-size: 0.85rem;
+      color: var(--sub);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .project-roles strong { color: var(--primary); font-weight: 600; }
+
+    .header-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .nav-link {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all .2s;
+    }
+    .nav-link:hover { background: var(--border); color: var(--primary); }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
 
     /* HERO */
-    .hero { margin-bottom: 48px; }
+    .hero { margin-bottom: 60px; }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: .72rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 4px;
-      letter-spacing: .04em;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: .05em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .hero h1 {
       font-family: var(--display);
-      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
-      color: var(--text);
-      line-height: 1.2;
-      margin-bottom: 16px;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 1.15rem;
       color: var(--sub);
-      max-width: 540px;
+      max-width: 640px;
       line-height: 1.8;
     }
-    .hero p strong { color: var(--text); font-weight: 600; }
+    .hero p strong { color: var(--primary); font-weight: 700; }
 
     .meta-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 28px;
+      gap: 12px;
+      margin-top: 36px;
     }
 
     .meta-chip {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 6px 12px;
-      font-size: .78rem;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: .85rem;
       color: var(--sub);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
+      transition: all .2s;
     }
-    .meta-chip strong { color: var(--text); font-weight: 600; }
+    .meta-chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .meta-chip strong { color: var(--primary); font-weight: 700; }
 
-    .divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 60px 0; }
 
     /* SECTION */
     .section-heading {
       font-family: var(--display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 24px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-heading::after {
+        content: '';
+        height: 2px;
+        flex-grow: 1;
+        background: var(--border);
+        border-radius: 2px;
     }
 
-    /* UPDATE LIST - GRID */
+    /* UPDATE LIST - VERTICAL STACK */
     .update-list { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-      gap: 20px; 
+      display: flex;
+      flex-direction: column;
+      gap: 16px; 
     }
 
     .update-item {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
-      transition: all .2s ease;
+      padding: 32px;
+      transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       text-decoration: none;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
-      min-height: 160px;
+      gap: 24px;
     }
     .update-item:hover {
-      border-color: var(--blue);
-      box-shadow: 0 10px 30px rgba(37,99,235,.06);
-      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+      transform: translateX(8px);
     }
     
-    .update-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
+    .update-item.featured {
+        border-left: 4px solid var(--accent);
+        background: linear-gradient(to right, #ffffff, #fcfdff);
     }
 
-    .update-week-box {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .update-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .update-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
     .update-week {
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--blue);
-      background: var(--blue-soft);
-      border-radius: 5px;
-      padding: 4px 8px;
-      text-align: center;
+      font-size: .75rem;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 6px;
+      padding: 4px 10px;
       letter-spacing: .02em;
-      width: fit-content;
     }
     
     .update-date {
-      font-size: .68rem;
+      font-size: .85rem;
       color: var(--sub);
       font-weight: 500;
-      margin-left: 2px;
-    }
-
-    .arrow-icon {
-      width: 20px; height: 20px;
-      fill: var(--sub);
-      transition: all .2s ease;
-    }
-    .update-item:hover .arrow-icon {
-      transform: translateX(4px);
-      fill: var(--blue);
     }
 
     .update-body h4 { 
-      font-size: 1.05rem; 
+      font-size: 1.25rem; 
       font-weight: 700; 
-      color: var(--text); 
+      color: var(--primary); 
       line-height: 1.4;
       margin: 0;
     }
 
+    .latest-badge {
+        font-size: .7rem;
+        font-weight: 700;
+        color: var(--green);
+        background: var(--green-bg);
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-left: 8px;
+    }
+
+    .arrow-icon {
+      width: 28px; height: 28px;
+      fill: var(--sub);
+      transition: all .3s ease;
+      background: var(--tag-bg);
+      border-radius: 50%;
+      padding: 4px;
+    }
+    .update-item:hover .arrow-icon {
+      fill: var(--white);
+      background: var(--accent);
+      transform: scale(1.1);
+    }
+
     /* FOOTER */
     footer {
-      margin-top: 80px;
-      padding-top: 24px;
+      margin-top: 100px;
+      padding-top: 40px;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 20px;
     }
-    footer p { font-size: .75rem; color: #b0b8c4; }
+    footer p { font-size: .85rem; color: var(--sub); }
 
     /* ANIM */
-    .fade-up { opacity: 0; transform: translateY(14px); animation: fu .45s ease forwards; }
+    .fade-up { opacity: 0; transform: translateY(20px); animation: fu .6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
     @keyframes fu { to { opacity:1; transform:translateY(0); } }
-    .d1{animation-delay:.08s} .d2{animation-delay:.16s} .d3{animation-delay:.24s} .d4{animation-delay:.32s}
+    .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s}
   </style>
 </head>
 <body>
@@ -280,10 +301,15 @@
         <span>Sistem Analizi ve Tasarımı</span>
       </div>
     </div>
+    
+    <div class="project-roles">
+      <div>Proje Öğretmeni: <strong>Alper Kahraman</strong></div>
+      <div>Proje Yürütücüsü: <strong>Ali Aslan</strong></div>
+    </div>
+
     <div class="header-right">
       <a href="index.html" class="nav-link active">Ana Sayfa</a>
       <a href="about.html" class="nav-link">Hakkında</a>
-      <div class="status-badge">Proje Devam Ediyor</div>
     </div>
   </header>
 
@@ -308,81 +334,82 @@
     <div class="section-heading">Haftalık Güncellemeler</div>
     <div class="update-list">
 
-      <!-- Hafta 1 -->
-      <a href="hafta1.html" class="update-item">
-        <div class="update-top">
-          <div class="update-week-box">
-            <div class="update-week">Hafta 1</div>
-            <div class="update-date">17 Şubat</div>
+      <!-- Hafta 5 -->
+      <a href="hafta5.html" class="update-item featured">
+        <div class="update-info">
+          <div class="update-meta">
+            <div class="update-week">Hafta 5</div>
+            <div class="update-date">17 Mart</div>
+            <span class="latest-badge">En Güncel</span>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-        </div>
-        <div class="update-body">
-          <h4>Teorik Bilgiler ve Giriş</h4>
-        </div>
-      </a>
-
-      <!-- Hafta 2 -->
-      <a href="hafta2.html" class="update-item">
-        <div class="update-top">
-          <div class="update-week-box">
-            <div class="update-week">Hafta 2</div>
-            <div class="update-date">24 Şubat</div>
+          <div class="update-body">
+            <h4>Yazılım Süreçleri ve Metodolojiler</h4>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
         </div>
-        <div class="update-body">
-          <h4>Proje Fikir Analizi</h4>
-        </div>
-      </a>
-
-      <!-- Hafta 3 -->
-      <a href="hafta3.html" class="update-item">
-        <div class="update-top">
-          <div class="update-week-box">
-            <div class="update-week">Hafta 3</div>
-            <div class="update-date">3 Mart</div>
-          </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-        </div>
-        <div class="update-body">
-          <h4>Proje Başlangıcı ve Kapsam</h4>
-        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
       </a>
 
       <!-- Hafta 4 -->
       <a href="hafta4.html" class="update-item">
-        <div class="update-top">
-          <div class="update-week-box">
+        <div class="update-info">
+          <div class="update-meta">
             <div class="update-week">Hafta 4</div>
             <div class="update-date">10 Mart</div>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          <div class="update-body">
+            <h4>Gereksinim Analizi</h4>
+          </div>
         </div>
-        <div class="update-body">
-          <h4>Gereksinim Analizi</h4>
-        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
       </a>
 
-      <!-- Hafta 5 -->
-      <a href="hafta5.html" class="update-item">
-        <div class="update-top">
-          <div class="update-week-box">
-            <div class="update-week">Hafta 5</div>
-            <div class="update-date">17 Mart</div>
+      <!-- Hafta 3 -->
+      <a href="hafta3.html" class="update-item">
+        <div class="update-info">
+          <div class="update-meta">
+            <div class="update-week">Hafta 3</div>
+            <div class="update-date">3 Mart</div>
           </div>
-          <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          <div class="update-body">
+            <h4>Proje Başlangıcı ve Kapsam</h4>
+          </div>
         </div>
-        <div class="update-body">
-          <h4>Yazılım Süreçleri ve Metodolojiler</h4>
+        <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+      </a>
+
+      <!-- Hafta 2 -->
+      <a href="hafta2.html" class="update-item">
+        <div class="update-info">
+          <div class="update-meta">
+            <div class="update-week">Hafta 2</div>
+            <div class="update-date">24 Şubat</div>
+          </div>
+          <div class="update-body">
+            <h4>Proje Fikir Analizi</h4>
+          </div>
         </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+      </a>
+
+      <!-- Hafta 1 -->
+      <a href="hafta1.html" class="update-item">
+        <div class="update-info">
+          <div class="update-meta">
+            <div class="update-week">Hafta 1</div>
+            <div class="update-date">17 Şubat</div>
+          </div>
+          <div class="update-body">
+            <h4>Teorik Bilgiler ve Giriş</h4>
+          </div>
+        </div>
+        <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
       </a>
 
     </div>
   </section>
 
   <footer class="fade-up d4">
-    <p>Depo Stok Kayıt & Takip Otomasyonu — Proje Geliştirme Blogu</p>
+    <p>© 2026 Depo Stok Kayıt & Takip Otomasyonu</p>
     <p>Sistem Analizi ve Tasarımı Dersi</p>
   </footer>
 

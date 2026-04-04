@@ -7,16 +7,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg:        #f7f8f9;
+      --bg:        #f8fafc;
       --white:     #ffffff;
-      --border:    #e4e7ec;
-      --blue:      #2563eb;
-      --blue-soft: #eff4ff;
-      --text:      #1a1d23;
-      --sub:       #6b7280;
+      --border:    #e2e8f0;
+      --primary:   #0f172a;
+      --accent:    #3b82f6;
+      --accent-soft:#eff6ff;
+      --text:      #334155;
+      --sub:       #64748b;
+      --tag-bg:    #f1f5f9;
+      --tag-text:  #475569;
       --sans:      'Inter', sans-serif;
       --display:   'Sora', sans-serif;
-      --radius:    12px;
+      --radius:    16px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,139 +28,199 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.7;
       min-height: 100vh;
     }
 
-    .page { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+    .page { max-width: 840px; margin: 0 auto; padding: 60px 24px 100px; }
 
+    /* HEADER */
     .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 32px;
+      padding-bottom: 40px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 48px;
+      margin-bottom: 60px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+
     .brand-icon {
-      width: 40px; height: 40px;
-      background: var(--blue);
-      border-radius: 8px;
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 12px;
       display: grid; place-items: center;
+      flex-shrink: 0;
     }
-    .brand-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .brand-icon svg { width: 24px; height: 24px; fill: #fff; }
+
     .brand-name {
       font-family: var(--display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
     }
+
+    .header-right { display: flex; align-items: center; gap: 16px; }
 
     .nav-link {
-      font-size: .82rem;
-      font-weight: 500;
+      font-size: .9rem;
+      font-weight: 600;
       color: var(--sub);
       text-decoration: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      transition: background .15s;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all .2s;
     }
-    .nav-link:hover { background: var(--border); }
+    .nav-link:hover { background: var(--border); color: var(--primary); }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--blue);
-      text-decoration: none;
-      font-size: .85rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
+    /* CONTENT CARD */
     .content-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      padding: 48px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
     }
 
     .week-badge {
-      display: inline-block;
-      background: var(--blue-soft);
-      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
       font-size: .75rem;
       font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 6px;
-      margin-bottom: 16px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
     h1 {
       font-family: var(--display);
-      font-size: 2rem;
+      font-size: clamp(2rem, 5vw, 2.5rem);
       font-weight: 800;
-      margin-bottom: 8px;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
     }
 
     .date {
+      font-size: 1rem;
       color: var(--sub);
-      font-size: .9rem;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .date::before {
+        content: '📅';
+        font-size: 1.1rem;
     }
 
     .description {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--text);
-      margin-bottom: 32px;
-      padding-bottom: 32px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
       border-bottom: 1px solid var(--border);
     }
 
     .details h2 {
       font-family: var(--display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 16px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .details h2::before {
+      content: '';
+      width: 4px; height: 28px;
+      background: var(--accent);
+      border-radius: 4px;
     }
 
     .details ul {
-      padding-left: 20px;
+      list-style: none;
+      margin-bottom: 24px;
     }
 
     .details li {
-      margin-bottom: 12px;
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .details li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
     }
 
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all .2s;
+      margin-bottom: 24px;
+    }
+    .back-link:hover { color: var(--accent); transform: translateX(-4px); }
+
+    /* FOOTER */
     footer {
-      margin-top: 64px;
-      padding-top: 24px;
+      margin-top: 80px;
+      padding-top: 40px;
       border-top: 1px solid var(--border);
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-    footer p { font-size: .75rem; color: #b0b8c4; }
+    footer p { font-size: .85rem; color: var(--sub); }
 
-    .fade-up { opacity: 0; transform: translateY(14px); animation: fu .45s ease forwards; }
+    /* ANIM */
+    .fade-up { opacity: 0; transform: translateY(20px); animation: fu .6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
     @keyframes fu { to { opacity:1; transform:translateY(0); } }
   </style>
 </head>
 <body>
 <div class="page">
+
   <header class="site-header fade-up">
     <a href="index.html" class="brand">
       <div class="brand-icon">
         <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5v2H2V7zm0 4h20v10H2V11zm4 2v6h4v-6H6zm8 0v6h4v-6h-4z"/></svg>
       </div>
-      <div class="brand-name">Depo Stok Takip</div>
+      <div class="brand-name">
+        Depo Stok Takip
+      </div>
     </a>
-    <nav>
+    <div class="header-right">
       <a href="index.html" class="nav-link">Ana Sayfa</a>
       <a href="about.html" class="nav-link">Hakkında</a>
-    </nav>
+    </div>
   </header>
 
   <main class="fade-up">
@@ -183,9 +246,11 @@
     </article>
   </main>
 
-  <footer>
-    <p>Depo Stok Kayıt & Takip Otomasyonu — Proje Geliştirme Blogu</p>
+  <footer class="fade-up">
+    <p>© 2026 Depo Stok Kayıt & Takip Otomasyonu</p>
+    <p>Sistem Analizi ve Tasarımı Dersi</p>
   </footer>
+
 </div>
 </body>
 </html>
