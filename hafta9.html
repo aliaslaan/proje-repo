@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hafta 9 — UML ve Activity Diyagramı</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #f8fafc;
+      --white:     #ffffff;
+      --border:    #e2e8f0;
+      --primary:   #0f172a;
+      --accent:    #3b82f6;
+      --accent-soft:#eff6ff;
+      --text:      #334155;
+      --sub:       #64748b;
+      --tag-bg:    #f1f5f9;
+      --tag-text:  #475569;
+      --sans:      'Inter', sans-serif;
+      --display:   'Sora', sans-serif;
+      --radius:    16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 840px; margin: 0 auto; padding: 60px 24px 100px; }
+
+    /* HEADER */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 60px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+
+    .brand-icon {
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+    }
+    .brand-icon svg { width: 24px; height: 24px; fill: #fff; }
+
+    .brand-name {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 16px; }
+
+    .nav-link {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all .2s;
+    }
+    .nav-link:hover { background: var(--border); color: var(--primary); }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .week-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .date {
+      font-size: 1rem;
+      color: var(--sub);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .date::before {
+        content: '📅';
+        font-size: 1.1rem;
+    }
+
+    .description {
+      font-size: 1.15rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .details h2 {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .details h2::before {
+      content: '';
+      width: 4px; height: 28px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .details h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    .details p {
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .details ul {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .details li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .details li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* DIAGRAM STYLING */
+    .diagram-container {
+      background: #fdfdfd;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 40px 20px;
+      margin: 32px 0;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+    }
+    .diagram-svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all .2s;
+      margin-bottom: 24px;
+    }
+    .back-link:hover { color: var(--accent); transform: translateX(-4px); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    footer p { font-size: .85rem; color: var(--sub); }
+
+    .fade-up { opacity: 0; transform: translateY(20px); animation: fu .6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+    @keyframes fu { to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header fade-up">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5v2H2V7zm0 4h20v10H2V11zm4 2v6h4v-6H6zm8 0v6h4v-6h-4z"/></svg>
+      </div>
+      <div class="brand-name">
+        Depo Stok Takip
+      </div>
+    </a>
+    <div class="header-right">
+      <a href="index.html" class="nav-link">Ana Sayfa</a>
+      <a href="about.html" class="nav-link">Hakkında</a>
+    </div>
+  </header>
+
+  <main class="fade-up">
+    <a href="index.html" class="back-link">← Geri Dön</a>
+    
+    <article class="content-card">
+      <div class="week-badge">Hafta 9</div>
+      <h1>UML ve Activity (Faaliyet) Diyagramı</h1>
+      <p class="date">14 Nisan 2026</p>
+
+      <div class="description">
+        Bu hafta UML (Unified Modeling Language) standartlarını ve sistemin iş akışlarını modellemek için kullanılan Activity (Faaliyet) diyagramlarını derinlemesine inceledik.
+      </div>
+
+      <div class="details">
+        <h2>UML Nedir?</h2>
+        <p>UML (Birleşik Modelleme Dili), bir yazılım sisteminin mimarisini, tasarımını ve işleyişini görselleştirmek için kullanılan standart bir dildir. Karmaşık yapıları herkesin anlayabileceği şemalara dönüştürür.</p>
+        
+        <h2>Activity (Faaliyet) Diyagramı</h2>
+        <p>Activity diyagramı, sistemdeki bir iş akışının veya sürecin adım adım nasıl ilerlediğini gösterir. Akış diyagramlarına (flowcharts) benzer ancak nesne tabanlı modelleme için daha uygundur.</p>
+
+        <div class="diagram-container">
+          <!-- SVG Activity Diagram Example -->
+          <svg class="diagram-svg" width="500" height="500" viewBox="0 0 500 500">
+            <!-- Start Point -->
+            <circle cx="250" cy="30" r="10" fill="#0f172a" />
+            <line x1="250" y1="40" x2="250" y2="70" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- Step 1 -->
+            <rect x="175" y="70" width="150" height="40" rx="20" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+            <text x="250" y="95" text-anchor="middle" font-size="12" font-weight="600">Barkod Tara</text>
+            <line x1="250" y1="110" x2="250" y2="140" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- Decision -->
+            <path d="M250 140 L280 170 L250 200 L220 170 Z" fill="#fff" stroke="#64748b" stroke-width="2" />
+            <text x="310" y="175" font-size="11" fill="#64748b">Ürün Kayıtlı mı?</text>
+
+            <!-- Relation No -->
+            <line x1="280" y1="170" x2="380" y2="170" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="320" y="165" font-size="11" font-weight="bold" fill="#ef4444">Hayır</text>
+
+            <!-- Step: Add New Product -->
+            <rect x="330" y="210" width="140" height="40" rx="20" fill="#fef2f2" stroke="#ef4444" stroke-width="2" />
+            <text x="400" y="235" text-anchor="middle" font-size="11" font-weight="600">Yeni Kayıt Aç</text>
+            <line x1="400" y1="250" x2="400" y2="330" stroke="#94a3b8" stroke-width="2" />
+            <line x1="400" y1="330" x2="250" y2="330" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- Relation Yes -->
+            <line x1="250" y1="200" x2="250" y2="240" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="255" y="225" font-size="11" font-weight="bold" fill="#10b981">Evet</text>
+
+            <!-- Step: Update Quantity -->
+            <rect x="175" y="240" width="150" height="40" rx="20" fill="#ecfdf5" stroke="#10b981" stroke-width="2" />
+            <text x="250" y="265" text-anchor="middle" font-size="11" font-weight="600">Miktarı Güncelle</text>
+            <line x1="250" y1="280" x2="250" y2="310" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- Final Step -->
+            <rect x="175" y="310" width="150" height="40" rx="20" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+            <text x="250" y="335" text-anchor="middle" font-size="11" font-weight="600">Değişikliği Kaydet</text>
+            <line x1="250" y1="350" x2="250" y2="380" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+            <!-- End Point -->
+            <circle cx="250" cy="395" r="15" stroke="#0f172a" stroke-width="2" fill="none" />
+            <circle cx="250" cy="395" r="8" fill="#0f172a" />
+
+            <!-- Arrow Head Definition -->
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <h3>Activity Diyagramı Bileşenleri</h3>
+        <ul>
+          <li><strong>Başlangıç Noktası:</strong> İş akışının nerede başladığını gösteren siyah dolu daire.</li>
+          <li><strong>Faaliyetler (Dikdörtgenler):</strong> Süreç sırasında gerçekleştirilen adımlar.</li>
+          <li><strong>Karar Noktası (Baklava):</strong> Akışın bir şarta göre ikiye ayrıldığı nokta.</li>
+          <li><strong>Bitiş Noktası:</strong> Sürecin tamamlandığını gösteren hedef işareti.</li>
+        </ul>
+
+        <h3>Örneğimiz: Stok Güncelleme Akışı</h3>
+        <p>Yukarıdaki diyagramda bir depo görevlisinin ürün barkodunu tarattığında sistemin nasıl davrandığını görüyoruz: Ürün sistemde kayıtlıysa doğrudan miktar güncelleniyor, kayıtlı değilse yeni bir kayıt formu açılıyor ve ardından değişiklik kaydedilerek süreç sonlanıyor.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="fade-up">
+    <p>© 2026 Depo Stok Kayıt & Takip Otomasyonu</p>
+    <p>Sistem Analizi ve Tasarımı Dersi</p>
+  </footer>
+
+</div>
+</body>
+</html>
