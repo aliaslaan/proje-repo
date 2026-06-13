@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hafta 17 — Final Sınavı ve Çalışma Sayfası</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #f8fafc;
+      --white:     #ffffff;
+      --border:    #e2e8f0;
+      --primary:   #0f172a;
+      --accent:    #3b82f6;
+      --accent-soft:#eff6ff;
+      --text:      #334155;
+      --sub:       #64748b;
+      --tag-bg:    #f1f5f9;
+      --tag-text:  #475569;
+      --sans:      'Inter', sans-serif;
+      --display:   'Sora', sans-serif;
+      --radius:    16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 840px; margin: 0 auto; padding: 60px 24px 100px; }
+
+    /* HEADER */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 60px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+
+    .brand-icon {
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+    }
+    .brand-icon svg { width: 24px; height: 24px; fill: #fff; }
+
+    .brand-name {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 16px; }
+
+    .nav-link {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all .2s;
+    }
+    .nav-link:hover { background: var(--border); color: var(--primary); }
+    .nav-link.active { background: var(--accent-soft); color: var(--accent); }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .week-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .date {
+      font-size: 1rem;
+      color: var(--sub);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .date::before {
+        content: '📅';
+        font-size: 1.1rem;
+    }
+
+    .description {
+      font-size: 1.15rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .details h2 {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 40px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .details h2::before {
+      content: '';
+      width: 4px; height: 28px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .details h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    .details p {
+      margin-bottom: 16px;
+    }
+
+    .details ul {
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+
+    .details li {
+      margin-bottom: 8px;
+    }
+
+    .study-box {
+      background: #fdfdff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+      border-left: 4px solid var(--accent);
+    }
+
+    .study-box h4 {
+      color: var(--accent);
+      font-family: var(--display);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 10px 0;
+      transition: all .2s;
+      margin-bottom: 24px;
+    }
+    .back-link:hover { color: var(--accent); transform: translateX(-4px); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    footer p { font-size: .85rem; color: var(--sub); }
+
+    .fade-up { opacity: 0; transform: translateY(20px); animation: fu .6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+    @keyframes fu { to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header fade-up">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 7l10-5 10 5v2H2V7zm0 4h20v10H2V11zm4 2v6h4v-6H6zm8 0v6h4v-6h-4z"/></svg>
+      </div>
+      <div class="brand-name">
+        Depo Stok Takip
+      </div>
+    </a>
+    <div class="header-right">
+      <a href="index.html" class="nav-link">Ana Sayfa</a>
+      <a href="about.html" class="nav-link">Hakkında</a>
+    </div>
+  </header>
+
+  <main class="fade-up">
+    <a href="index.html" class="back-link">← Geri Dön</a>
+    
+    <article class="content-card">
+      <div class="week-badge">Hafta 17</div>
+      <h1>Final Sınavı ve Çalışma Sayfası</h1>
+      <p class="date">9 Haziran 2026</p>
+
+      <div class="description">
+        Dönemin sonuna geldik! Bu sayfa, vize sonrası işlediğimiz tüm konuların özetlerini içeren kapsamlı bir final sınavı çalışma kılavuzudur.
+      </div>
+
+      <div class="details">
+        <h2>Vize Sonrası Konu Özetleri</h2>
+
+        <div class="study-box">
+          <h4>Hafta 8 & 9: UML ve Diyagramlar</h4>
+          <ul>
+            <li><strong>Use Case Diyagramı:</strong> Aktörler, Kullanım Durumları ve Sistem Sınırı ile sistemin dışarıdan görünümü.</li>
+            <li><strong>Activity Diyagramı:</strong> İş akışları, karar noktaları (baklava dilimi) ve paralel akışlar.</li>
+            <li><strong>UML Standartları:</strong> Yazılım mimarisini görselleştirmek için kullanılan evrensel modelleme dili.</li>
+          </ul>
+        </div>
+
+        <div class="study-box">
+          <h4>Hafta 10: Mimari Tasarım ve Raporlama</h4>
+          <ul>
+            <li><strong>Proje Kapsamı:</strong> Sistemin sınırlarının ve hedeflerinin belirlenmesi.</li>
+            <li><strong>Detaylı Analiz:</strong> Sequence (Ardışıllık) ve State Machine (Durum) diyagramları ile sistemin dinamik yapısı.</li>
+          </ul>
+        </div>
+
+        <div class="study-box">
+          <h4>Hafta 11: Veritabanı Tasarımı (ER)</h4>
+          <ul>
+            <li><strong>Varlık-İlişki Modeli:</strong> Entity (Varlık), Attribute (Nitelik) ve Relationship (İlişki) kavramları.</li>
+            <li><strong>İlişki Tipleri:</strong> 1:1, 1:N ve M:N ilişkilerin tablolaştırılması.</li>
+            <li><strong>Normalizasyon:</strong> Veri tekrarını önleme ve tutarlılık sağlama süreçleri.</li>
+          </ul>
+        </div>
+
+        <div class="study-box">
+          <h4>Hafta 12: UI/UX ve Tasarım Araçları</h4>
+          <ul>
+            <li><strong>Tasarım Araçları:</strong> Penpot (bulut tabanlı) ve Pencil (mockup) kullanımı.</li>
+            <li><strong>Tasarım-Veri İlişkisi:</strong> Arayüz alanlarının veritabanı sütunları ile eşleştirilmesi.</li>
+            <li><strong>Kullanıcı Deneyimi:</strong> Hızlı ve hatasız kullanım için sade arayüz prensipleri.</li>
+          </ul>
+        </div>
+
+        <div class="study-box">
+          <h4>Hafta 13 & 16: Tekrar ve Sunum</h4>
+          <ul>
+            <li><strong>Genel Tekrar:</strong> Analizden tasarıma tüm sürecin bütüncül bakış açısıyla incelenmesi.</li>
+            <li><strong>Proje Bitimi:</strong> Uygulamanın final hali ve elde edilen sonuçların değerlendirilmesi.</li>
+          </ul>
+        </div>
+
+        <h2>Sınav İçin İpuçları</h2>
+        <p>Final sınavında özellikle diyagram okuma ve senaryo üzerinden ER modelleme konularına odaklanmanız tavsiye edilir. Dönem boyunca hazırladığımız haftalık raporlar en iyi çalışma kaynaklarıdır.</p>
+        
+        <div class="info-box" style="background: #ecfdf5; border-left: 4px solid #10b981; padding: 20px; border-radius: 12px; margin-top: 30px;">
+          <h3 style="color: #065f46; margin-top: 0;">Başarılar!</h3>
+          <p style="color: #065f46; margin-bottom: 0;">Tüm arkadaşlara final sınavında başarılar dilerim. Harika bir dönem geçirdik!</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="fade-up">
+    <p>© 2026 Depo Stok Kayıt & Takip Otomasyonu</p>
+    <p>Sistem Analizi ve Tasarımı Dersi</p>
+  </footer>
+
+</div>
+</body>
+</html>
